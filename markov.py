@@ -16,7 +16,7 @@ def open_and_read_file(file_path):
     return contents
 
 
-def make_chains(text_string):
+def make_chains(contents):
     """Take input text as string; return dictionary of Markov chains.
 
     A chain will be a key that consists of a tuple of (word1, word2)
@@ -44,14 +44,20 @@ def make_chains(text_string):
     chains = {}
 
     # your code goes here
+    contents = contents.split()
+    for i in range(len(contents)-2):
+        key_pair = contents[i],contents[i+1]
+        value = contents[i+2]
+        chains.setdefault(key_pair, []).append(value)
 
-    return chains
+    print (chains)
 
 
 def make_text(chains):
     """Return text from chains."""
-
+    
     words = []
+
 
     # your code goes here
 
